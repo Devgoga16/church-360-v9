@@ -22,11 +22,14 @@ export function Header({ onToggleSidebar }: HeaderProps) {
             <Menu className="h-5 w-5" />
           </button>
 
-          <div className="flex items-center gap-2">
-            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 to-purple-700">
-              <span className="text-white font-bold text-sm">I</span>
+          <div className="flex items-center gap-3">
+            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-purple-600 via-purple-500 to-purple-700 shadow-lg shadow-purple-500/30">
+              <div className="text-white font-bold text-lg">✦</div>
             </div>
-            <h1 className="text-xl font-bold hidden sm:block">Iglesia 360</h1>
+            <div className="hidden sm:flex flex-col">
+              <h1 className="text-lg font-bold text-gray-900 dark:text-white leading-tight">Iglesia 360</h1>
+              <span className="text-xs text-gray-500 dark:text-gray-400">Gestión de Solicitudes</span>
+            </div>
           </div>
         </div>
 

@@ -14,9 +14,10 @@ export default {
     },
     extend: {
       fontFamily: {
+        logo: ["League Gothic", "sans-serif"],
         heading: ["League Gothic", "sans-serif"],
-        body: ["Inter", "sans-serif"],
-        subheading: ["Poppins", "sans-serif"],
+        body: ["Open Sans", "Inter", "sans-serif"],
+        subheading: ["Montserrat", "Poppins", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

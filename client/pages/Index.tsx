@@ -49,10 +49,10 @@ export default function Index() {
       <div className="p-6 md:p-8 max-w-7xl mx-auto space-y-8">
         {/* Header */}
         <div className="space-y-2">
-          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
+          <h1 className="text-3xl md:text-4xl font-bold text-[#050A30] dark:text-white">
             Bienvenido a Iglesia 360
           </h1>
-          <p className="text-slate-600 dark:text-slate-400">
+          <p className="text-[#173747] dark:text-slate-400">
             Sistema integral de gestión de solicitudes financieras
           </p>
         </div>

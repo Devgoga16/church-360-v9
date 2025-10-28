@@ -1,0 +1,277 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=League+Gothic&family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Iglesia 360 Design System
+   * Color Palette:
+   * - Primary: #5E17EB (Purple)
+   * - Secondary: #042D62 (Dark Blue)
+   * - Accent: #0C6980 (Teal)
+   * - Background: #FFFFFF (White)
+   * - Surface: #BFE4F9 (Light Blue)
+   * - Text Primary: #050A30 (Dark Navy)
+   * - Text Secondary: #173747 (Dark Slate)
+   */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 225 71% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 225 71% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 225 71% 10%;
+
+    /* Primary: Purple #5E17EB */
+    --primary: 265 86% 51%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Dark Blue #042D62 */
+    --secondary: 213 88% 20%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted: Light Blue #BFE4F9 */
+    --muted: 209 96% 85%;
+    --muted-foreground: 225 71% 10%;
+
+    /* Accent: Teal #0C6980 */
+    --accent: 197 87% 27%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 225 71% 10%;
+
+    --info: 197 87% 27%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 197 37% 22%;
+    --input: 209 96% 85%;
+    --ring: 265 86% 51%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar: Dark Navy Background #050A30 */
+    --sidebar-background: 225 71% 10%;
+    --sidebar-foreground: 0 0% 100%;
+
+    /* Sidebar Primary: Purple #5E17EB */
+    --sidebar-primary: 265 86% 51%;
+    --sidebar-primary-foreground: 0 0% 100%;
+
+    /* Sidebar Accent: Teal #0C6980 */
+    --sidebar-accent: 197 87% 27%;
+    --sidebar-accent-foreground: 0 0% 100%;
+
+    --sidebar-border: 213 88% 20%;
+    --sidebar-ring: 265 86% 51%;
+  }
+
+  .dark {
+    --background: 225 71% 10%;
+    --foreground: 209 96% 85%;
+
+    --card: 213 88% 20%;
+    --card-foreground: 209 96% 85%;
+
+    --popover: 213 88% 20%;
+    --popover-foreground: 209 96% 85%;
+
+    --primary: 265 86% 51%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 197 87% 27%;
+    --secondary-foreground: 209 96% 85%;
+
+    --muted: 213 88% 20%;
+    --muted-foreground: 209 96% 85%;
+
+    --accent: 197 87% 27%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 225 71% 10%;
+
+    --info: 197 87% 27%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 197 87% 27%;
+    --input: 213 88% 20%;
+    --ring: 265 86% 51%;
+
+    --sidebar-background: 225 71% 10%;
+    --sidebar-foreground: 209 96% 85%;
+    --sidebar-primary: 265 86% 51%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 197 87% 27%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 197 87% 27%;
+    --sidebar-ring: 265 86% 51%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+
+  :where(p, span, li, a, button, label, td, th) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  pre,
+  code {
+    overflow-x: auto;
+    white-space: pre;
+    font-family: 'Courier New', monospace;
+  }
+
+  /* Branding/Logo Typography */
+  .font-logo {
+    font-family: 'League Gothic', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'League Gothic', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  h1 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+
+  /* Subheadings */
+  .subheading, .subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+  }
+
+  /* Button Typography */
+  button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+  }
+
+  /* Label Typography */
+  label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/80 backdrop-blur-md dark:bg-slate-900/80;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:scale-[1.02];
+  }
+
+  .badge-status {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .badge-pending {
+    @apply badge-status bg-warning/10 text-warning dark:bg-warning/20;
+  }
+
+  .badge-approved {
+    @apply badge-status bg-success/10 text-success dark:bg-success/20;
+  }
+
+  .badge-rejected {
+    @apply badge-status bg-destructive/10 text-destructive dark:bg-destructive/20;
+  }
+
+  .badge-completed {
+    @apply badge-status bg-success/10 text-success dark:bg-success/20;
+  }
+
+  .badge-draft {
+    @apply badge-status bg-muted text-muted-foreground;
+  }
+
+  .input-focus {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-950;
+  }
+
+  /* Iglesia 360 Custom Components */
+  .iglesia-btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 active:bg-primary/80 transition-colors duration-200;
+  }
+
+  .iglesia-btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90 active:bg-secondary/80 transition-colors duration-200;
+  }
+
+  .iglesia-btn-accent {
+    @apply bg-accent text-accent-foreground hover:bg-accent/90 active:bg-accent/80 transition-colors duration-200;
+  }
+
+  .iglesia-card {
+    @apply bg-card text-card-foreground rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+
+  .iglesia-sidebar {
+    @apply bg-sidebar text-sidebar-foreground;
+  }
+
+  .iglesia-nav-item {
+    @apply px-4 py-3 rounded-lg font-subheading transition-all duration-200;
+  }
+
+  .iglesia-nav-item-active {
+    @apply bg-sidebar-primary text-sidebar-primary-foreground;
+  }
+
+  .iglesia-nav-item-hover {
+    @apply hover:bg-sidebar-accent hover:text-sidebar-accent-foreground;
+  }
+
+  .iglesia-text-primary {
+    @apply text-foreground;
+  }
+
+  .iglesia-text-secondary {
+    @apply text-muted-foreground;
+  }
+}

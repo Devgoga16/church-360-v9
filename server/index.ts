@@ -1,0 +1,78 @@
+import "dotenv/config";
+import express from "express";
+import cors from "cors";
+import { handleDemo } from "./routes/demo";
+import {
+  listUsers,
+  getUser,
+  createUser,
+  updateUser,
+  deleteUser,
+} from "./routes/users";
+import {
+  listSolicitudes,
+  getSolicitud,
+  createSolicitud,
+  updateSolicitud,
+  submitSolicitud,
+  getDashboardStats,
+} from "./routes/solicitudes";
+import {
+  approveSolicitud,
+  rejectSolicitud,
+  getApprovals,
+} from "./routes/approvals";
+
+export function createServer() {
+  const app = express();
+
+  // Middleware
+  app.use(cors());
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
+
+  // ============================================================================
+  // DEMO ROUTES
+  // ============================================================================
+
+  app.get("/api/ping", (_req, res) => {
+    const ping = process.env.PING_MESSAGE ?? "ping";
+    res.json({ message: ping });
+  });
+
+  app.get("/api/demo", handleDemo);
+
+  // ============================================================================
+  // USERS ROUTES
+  // ============================================================================
+
+  app.get("/api/users", listUsers);
+  app.get("/api/users/:id", getUser);
+  app.post("/api/users", createUser);
+  app.put("/api/users/:id", updateUser);
+  app.delete("/api/users/:id", deleteUser);
+
+  // ============================================================================
+  // SOLICITUDES (FINANCIAL REQUESTS) ROUTES
+  // ============================================================================
+
+  // Dashboard route must come BEFORE parameterized routes
+  app.get("/api/solicitudes/dashboard/stats", getDashboardStats);
+
+  // Then all parameterized and general routes
+  app.get("/api/solicitudes", listSolicitudes);
+  app.get("/api/solicitudes/:id", getSolicitud);
+  app.post("/api/solicitudes", createSolicitud);
+  app.put("/api/solicitudes/:id", updateSolicitud);
+  app.post("/api/solicitudes/:id/submit", submitSolicitud);
+
+  // ============================================================================
+  // APPROVALS ROUTES
+  // ============================================================================
+
+  app.post("/api/solicitudes/:solicitudId/approve", approveSolicitud);
+  app.post("/api/solicitudes/:solicitudId/reject", rejectSolicitud);
+  app.get("/api/solicitudes/:solicitudId/approvals", getApprovals);
+
+  return app;
+}

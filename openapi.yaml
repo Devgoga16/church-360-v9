@@ -1,0 +1,656 @@
+openapi: 3.0.0
+info:
+  title: Iglesia 360 API
+  description: Sistema integral de gestión de solicitudes financieras para iglesias
+  version: 1.0.0
+  contact:
+    name: Iglesia 360 Support
+    email: support@iglesia360.com
+
+servers:
+  - url: http://localhost:8080/api
+    description: Local development server
+  - url: https://api.iglesia360.com/api
+    description: Production server
+
+tags:
+  - name: Users
+    description: User management endpoints
+  - name: Solicitudes
+    description: Financial requests management
+  - name: Approvals
+    description: Approval workflow endpoints
+  - name: Dashboard
+    description: Dashboard and statistics
+
+paths:
+  /users:
+    get:
+      tags:
+        - Users
+      summary: List all users
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [active, inactive, suspended]
+        - name: role
+          in: query
+          schema:
+            type: string
+            enum: [admin, tesorero, pastor_general, pastor_red, usuario]
+      responses:
+        200:
+          description: List of users
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+                  total:
+                    type: integer
+                  page:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+
+    post:
+      tags:
+        - Users
+      summary: Create a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+      responses:
+        201:
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/User'
+
+  /users/{id}:
+    get:
+      tags:
+        - Users
+      summary: Get a specific user
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: User details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/User'
+        404:
+          description: User not found
+
+    put:
+      tags:
+        - Users
+      summary: Update a user
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserRequest'
+      responses:
+        200:
+          description: User updated successfully
+
+  /solicitudes:
+    get:
+      tags:
+        - Solicitudes
+      summary: List financial requests
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [borrador, pendiente, en_revision, aprobado_parcial, aprobado, rechazado, completado, cancelado]
+        - name: ministryId
+          in: query
+          schema:
+            type: integer
+        - name: requesterUserId
+          in: query
+          schema:
+            type: integer
+      responses:
+        200:
+          description: List of solicitudes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Solicitud'
+                  total:
+                    type: integer
+                  page:
+                    type: integer
+                  pageSize:
+                    type: integer
+                  totalPages:
+                    type: integer
+
+    post:
+      tags:
+        - Solicitudes
+      summary: Create a new financial request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSolicitudRequest'
+      responses:
+        201:
+          description: Solicitud created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/Solicitud'
+        400:
+          description: Validation error
+
+  /solicitudes/{id}:
+    get:
+      tags:
+        - Solicitudes
+      summary: Get solicitud details
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Solicitud details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/Solicitud'
+
+    put:
+      tags:
+        - Solicitudes
+      summary: Update a solicitud (draft only)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSolicitudRequest'
+      responses:
+        200:
+          description: Solicitud updated successfully
+
+  /solicitudes/{id}/submit:
+    post:
+      tags:
+        - Solicitudes
+      summary: Submit a solicitud for review
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comments:
+                  type: string
+      responses:
+        200:
+          description: Solicitud submitted successfully
+
+  /solicitudes/{solicitudId}/approve:
+    post:
+      tags:
+        - Approvals
+      summary: Approve a solicitud
+      parameters:
+        - name: solicitudId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comments:
+                  type: string
+      responses:
+        200:
+          description: Solicitud approved successfully
+
+  /solicitudes/{solicitudId}/reject:
+    post:
+      tags:
+        - Approvals
+      summary: Reject a solicitud
+      parameters:
+        - name: solicitudId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - rejectionReason
+              properties:
+                rejectionReason:
+                  type: string
+                comments:
+                  type: string
+      responses:
+        200:
+          description: Solicitud rejected successfully
+
+  /solicitudes/dashboard/stats:
+    get:
+      tags:
+        - Dashboard
+      summary: Get dashboard statistics
+      responses:
+        200:
+          description: Dashboard statistics
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      totalSolicitudes:
+                        type: integer
+                      pendingSolicitudes:
+                        type: integer
+                      approvedSolicitudes:
+                        type: integer
+                      totalAmount:
+                        type: number
+                      approvedAmount:
+                        type: number
+                      ministries:
+                        type: integer
+                      users:
+                        type: integer
+
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - id
+        - email
+        - name
+        - status
+        - roles
+        - createdAt
+        - updatedAt
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+          format: email
+        name:
+          type: string
+        phone:
+          type: string
+        status:
+          type: string
+          enum: [active, inactive, suspended]
+        roles:
+          type: array
+          items:
+            type: string
+            enum: [admin, tesorero, pastor_general, pastor_red, usuario]
+        lastLogin:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    CreateUserRequest:
+      type: object
+      required:
+        - email
+        - name
+      properties:
+        email:
+          type: string
+          format: email
+        name:
+          type: string
+        phone:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+
+    UpdateUserRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        phone:
+          type: string
+        status:
+          type: string
+          enum: [active, inactive, suspended]
+        roles:
+          type: array
+          items:
+            type: string
+
+    Solicitud:
+      type: object
+      required:
+        - id
+        - code
+        - ministryId
+        - requesterUserId
+        - responsibleUserId
+        - title
+        - description
+        - totalAmount
+        - currency
+        - status
+        - paymentType
+        - createdAt
+        - updatedAt
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        ministryId:
+          type: integer
+        ministryName:
+          type: string
+        requesterUserId:
+          type: integer
+        requesterName:
+          type: string
+        responsibleUserId:
+          type: integer
+        responsibleName:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        totalAmount:
+          type: number
+          format: double
+        currency:
+          type: string
+          default: USD
+        status:
+          type: string
+          enum: [borrador, pendiente, en_revision, aprobado_parcial, aprobado, rechazado, completado, cancelado]
+        paymentType:
+          type: string
+          enum: [uno_mismo, terceros]
+        paymentDetail:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SolicitudItem'
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/SolicitudAttachment'
+        approvals:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApprovalInfo'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    CreateSolicitudRequest:
+      type: object
+      required:
+        - ministryId
+        - title
+        - description
+        - responsibleUserId
+        - paymentType
+        - items
+      properties:
+        ministryId:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        responsibleUserId:
+          type: integer
+        paymentType:
+          type: string
+          enum: [uno_mismo, terceros]
+        paymentDetail:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SolicitudItem'
+        currency:
+          type: string
+          default: USD
+
+    UpdateSolicitudRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        responsibleUserId:
+          type: integer
+        paymentType:
+          type: string
+        paymentDetail:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SolicitudItem'
+
+    SolicitudItem:
+      type: object
+      required:
+        - description
+        - amount
+      properties:
+        id:
+          type: integer
+        itemNumber:
+          type: integer
+        description:
+          type: string
+        amount:
+          type: number
+        quantity:
+          type: integer
+        unitPrice:
+          type: number
+
+    SolicitudAttachment:
+      type: object
+      required:
+        - id
+        - fileName
+        - filePath
+        - uploadedBy
+        - documentType
+        - uploadedAt
+      properties:
+        id:
+          type: integer
+        fileName:
+          type: string
+        fileType:
+          type: string
+        fileSize:
+          type: integer
+        filePath:
+          type: string
+        uploadedBy:
+          type: integer
+        uploadedByName:
+          type: string
+        documentType:
+          type: string
+          enum: [comprobante, presupuesto, otro]
+        uploadedAt:
+          type: string
+          format: date-time
+
+    ApprovalInfo:
+      type: object
+      required:
+        - id
+        - solicitudId
+        - approverUserId
+        - approvalOrder
+        - status
+        - requiredApproval
+        - createdAt
+        - updatedAt
+      properties:
+        id:
+          type: integer
+        solicitudId:
+          type: integer
+        approverUserId:
+          type: integer
+        approverName:
+          type: string
+        approvalOrder:
+          type: integer
+        status:
+          type: string
+          enum: [pendiente, aprobado, rechazado]
+        requiredApproval:
+          type: boolean
+        approvalDate:
+          type: string
+          format: date-time
+        comments:
+          type: string
+        rejectionReason:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time

@@ -98,7 +98,7 @@ export default function Index() {
         <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
           <div className="p-6 border-b border-slate-200 dark:border-slate-800">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-bold text-slate-900 dark:text-white">
+              <h2 className="text-xl font-bold text-[#050A30] dark:text-white">
                 Solicitudes Recientes
               </h2>
               <Link
@@ -113,21 +113,21 @@ export default function Index() {
 
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-slate-50 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+              <thead className="bg-[#BFE4F9] dark:bg-slate-800 border-b border-[#BFE4F9] dark:border-slate-700">
                 <tr>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-slate-700 dark:text-slate-300">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-[#050A30] dark:text-slate-300">
                     Código
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-slate-700 dark:text-slate-300">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-[#050A30] dark:text-slate-300">
                     Título
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-slate-700 dark:text-slate-300">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-[#050A30] dark:text-slate-300">
                     Monto
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-slate-700 dark:text-slate-300">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-[#050A30] dark:text-slate-300">
                     Estado
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-slate-700 dark:text-slate-300">
+                  <th className="px-6 py-4 text-left text-xs font-semibold text-[#050A30] dark:text-slate-300">
                     Fecha
                   </th>
                 </tr>
@@ -148,19 +148,19 @@ export default function Index() {
                         </Link>
                       </td>
                       <td className="px-6 py-4">
-                        <span className="text-sm text-slate-700 dark:text-slate-300 line-clamp-1">
+                        <span className="text-sm text-[#173747] dark:text-slate-300 line-clamp-1">
                           {solicitud.title}
                         </span>
                       </td>
                       <td className="px-6 py-4">
-                        <span className="font-medium text-slate-900 dark:text-white">
+                        <span className="font-medium text-[#050A30] dark:text-white">
                           {formatCurrency(solicitud.totalAmount)}
                         </span>
                       </td>
                       <td className="px-6 py-4">
                         <StatusBadge status={solicitud.status} />
                       </td>
-                      <td className="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">
+                      <td className="px-6 py-4 text-sm text-[#173747] dark:text-slate-400">
                         {new Date(solicitud.createdAt).toLocaleDateString("es-ES")}
                       </td>
                     </tr>

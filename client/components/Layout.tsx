@@ -12,9 +12,9 @@ export function Layout({ children }: LayoutProps) {
 
   return (
     <div className="flex flex-col h-screen bg-white dark:bg-slate-950">
-      <Header onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)} />
+      <Header onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
       <div className="flex flex-1 overflow-hidden">
-        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} isCollapsed={sidebarCollapsed} />
+        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} isCollapsed={sidebarCollapsed} onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)} />
         <main className="flex-1 overflow-auto">
           {children}
         </main>

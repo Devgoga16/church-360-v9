@@ -15,19 +15,12 @@ export function Header({ onToggleSidebar, onToggleCollapse }: HeaderProps) {
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-white border-slate-200 dark:bg-slate-950 dark:border-slate-800">
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <button
             onClick={onToggleSidebar}
             className="inline-flex md:hidden items-center justify-center w-10 h-10 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-300"
           >
             <Menu className="h-5 w-5" />
-          </button>
-
-          <button
-            onClick={onToggleCollapse}
-            className="hidden md:inline-flex items-center justify-center w-10 h-10 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-300"
-          >
-            <ChevronLeft className="h-5 w-5" />
           </button>
 
           <div className="flex items-center gap-3">
@@ -39,6 +32,13 @@ export function Header({ onToggleSidebar, onToggleCollapse }: HeaderProps) {
               <span className="text-xs font-subheading text-[#173747] dark:text-slate-400">Gestión de Solicitudes</span>
             </div>
           </div>
+
+          <button
+            onClick={onToggleCollapse}
+            className="hidden md:inline-flex items-center justify-center w-10 h-10 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-300"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
         </div>
 
         <div className="flex items-center gap-4">

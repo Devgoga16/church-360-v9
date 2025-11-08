@@ -126,7 +126,7 @@ export default function Index() {
 
         {/* Recent Solicitudes Section */}
         <div className="bg-white dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
-          <div className="p-6 border-b border-slate-200 dark:border-slate-800">
+          <div className="p-6">
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-bold text-[#050A30] dark:text-white">
                 Solicitudes Recientes
@@ -140,6 +140,7 @@ export default function Index() {
               </Link>
             </div>
           </div>
+          <div className="border-t border-slate-200 dark:border-slate-800"></div>
 
           <div className="overflow-x-auto">
             <table className="w-full">

@@ -79,7 +79,7 @@ export function Sidebar({ isOpen = true, onClose, isCollapsed = false }: Sidebar
           {menuSections.map((section, index) => (
             <div key={section.title} className={cn(
               "border-t border-b border-slate-200 dark:border-slate-700",
-              index === 0 ? "pt-6" : "pt-6",
+              index === 0 ? "pt-6" : "pt-3",
               index === menuSections.length - 1 ? "pb-6" : "pb-6"
             )}>
               {!isCollapsed && (

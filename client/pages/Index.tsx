@@ -168,9 +168,9 @@ export default function Index() {
                   recentSolicitudes.map((solicitud) => (
                     <tr
                       key={solicitud.id}
-                      className="hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors"
+                      className="hover:bg-slate-50/50 dark:hover:bg-slate-900/30 transition-colors duration-150"
                     >
-                      <td className="px-6 py-3">
+                      <td className="px-6 py-4">
                         <Link
                           to={`/solicitudes/${solicitud.id}`}
                           className="font-semibold text-[#042D62] hover:text-[#042D62]/80 transition-colors text-sm"
@@ -178,27 +178,27 @@ export default function Index() {
                           {solicitud.code}
                         </Link>
                       </td>
-                      <td className="px-6 py-3">
-                        <span className="text-sm text-slate-600 dark:text-slate-300 line-clamp-1">
+                      <td className="px-6 py-4">
+                        <span className="text-sm text-slate-700 dark:text-slate-300 line-clamp-1">
                           {solicitud.title}
                         </span>
                       </td>
-                      <td className="px-6 py-3">
-                        <span className="font-medium text-slate-900 dark:text-white text-sm">
+                      <td className="px-6 py-4">
+                        <span className="font-semibold text-slate-900 dark:text-white text-sm">
                           {formatCurrency(solicitud.totalAmount)}
                         </span>
                       </td>
-                      <td className="px-6 py-3">
+                      <td className="px-6 py-4">
                         <StatusBadge status={solicitud.status} />
                       </td>
-                      <td className="px-6 py-3 text-sm text-slate-500 dark:text-slate-400">
+                      <td className="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">
                         {new Date(solicitud.createdAt).toLocaleDateString("es-ES")}
                       </td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={5} className="px-6 py-8 text-center text-slate-500">
+                    <td colSpan={5} className="px-6 py-12 text-center text-slate-500 dark:text-slate-400">
                       No hay solicitudes aún
                     </td>
                   </tr>

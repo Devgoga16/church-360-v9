@@ -46,7 +46,7 @@ export default function Index() {
 
   return (
     <Layout>
-      <div className="p-6 md:p-8 max-w-7xl mx-auto space-y-8">
+      <div className="p-6 md:p-8 space-y-8">
         {/* Header */}
         <div className="space-y-2">
           <h1 className="text-3xl md:text-4xl font-bold text-[#050A30] dark:text-white">

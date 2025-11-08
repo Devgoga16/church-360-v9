@@ -63,7 +63,7 @@ export default function Index() {
             {[...Array(4)].map((_, i) => (
               <div
                 key={i}
-                className="bg-slate-200 dark:bg-slate-800 rounded-lg h-24"
+                className="bg-slate-200 dark:bg-slate-800 rounded-xl h-24"
               />
             ))}
           </div>

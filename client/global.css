@@ -207,27 +207,27 @@
   }
 
   .badge-status {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+    @apply inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold uppercase tracking-wide;
   }
 
   .badge-pending {
-    @apply badge-status bg-warning/10 text-warning dark:bg-warning/20;
+    @apply badge-status bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200;
   }
 
   .badge-approved {
-    @apply badge-status bg-success/10 text-success dark:bg-success/20;
+    @apply badge-status bg-[#042D62]/10 text-[#042D62] dark:bg-[#042D62]/20 dark:text-blue-300;
   }
 
   .badge-rejected {
-    @apply badge-status bg-destructive/10 text-destructive dark:bg-destructive/20;
+    @apply badge-status bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200;
   }
 
   .badge-completed {
-    @apply badge-status bg-success/10 text-success dark:bg-success/20;
+    @apply badge-status bg-[#042D62]/10 text-[#042D62] dark:bg-[#042D62]/20 dark:text-blue-300;
   }
 
   .badge-draft {
-    @apply badge-status bg-muted text-muted-foreground;
+    @apply badge-status bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200;
   }
 
   .input-focus {

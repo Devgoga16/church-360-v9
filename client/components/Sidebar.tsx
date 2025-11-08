@@ -73,23 +73,6 @@ export function Sidebar({ isOpen = true, onClose, isCollapsed = false, onToggleC
           !isOpen && "-translate-x-full md:translate-x-0"
         )}
       >
-        <div className={cn(
-          "border-b border-slate-200 dark:border-slate-800 flex items-center justify-center",
-          isCollapsed ? "px-2 py-4" : "px-3 py-4"
-        )}>
-          <button
-            onClick={onToggleCollapse}
-            className="hidden md:inline-flex items-center justify-center w-10 h-10 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-300"
-            title={isCollapsed ? "Expandir" : "Contraer"}
-          >
-            {isCollapsed ? (
-              <ChevronRight className="h-5 w-5" />
-            ) : (
-              <ChevronLeft className="h-5 w-5" />
-            )}
-          </button>
-        </div>
-
         <nav className={cn(
           "flex-1 py-6 space-y-6 overflow-y-auto",
           isCollapsed ? "px-2" : "px-3"

@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { ChevronRight, LayoutDashboard, FileText, Users, Settings, LogOut } from "lucide-react";
+import { ChevronRight, LayoutDashboard, FileText, Users, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface SidebarProps {

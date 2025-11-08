@@ -93,15 +93,15 @@ export default function Index() {
         ) : null}
 
         {/* Recent Solicitudes Section */}
-        <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+        <div className="bg-white dark:bg-slate-950 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
           <div className="p-6 border-b border-slate-200 dark:border-slate-800">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-bold text-[#050A30] dark:text-white">
+              <h2 className="text-lg font-bold text-[#050A30] dark:text-white">
                 Solicitudes Recientes
               </h2>
               <Link
                 to="/solicitudes"
-                className="flex items-center gap-2 text-primary hover:text-primary/80 font-medium text-sm transition-colors"
+                className="flex items-center gap-2 text-[#042D62] hover:text-[#042D62]/80 font-medium text-sm transition-colors"
               >
                 Ver todas
                 <ArrowRight className="h-4 w-4" />
@@ -111,21 +111,21 @@ export default function Index() {
 
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-[#BFE4F9] dark:bg-slate-800 border-b border-[#BFE4F9] dark:border-slate-700">
+              <thead className="bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
                 <tr>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-[#050A30] dark:text-slate-300">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wide">
                     Código
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-[#050A30] dark:text-slate-300">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wide">
                     Título
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-[#050A30] dark:text-slate-300">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wide">
                     Monto
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-[#050A30] dark:text-slate-300">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wide">
                     Estado
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-[#050A30] dark:text-slate-300">
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wide">
                     Fecha
                   </th>
                 </tr>

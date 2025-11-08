@@ -93,34 +93,31 @@ export default function Index() {
         ) : null}
 
         {/* Quick Actions Buttons */}
-        <div className="bg-gradient-to-r from-[#042D62]/5 to-[#042D62]/10 dark:from-[#042D62]/20 dark:to-[#042D62]/30 rounded-xl border border-[#042D62]/20 dark:border-[#042D62]/40 p-4 shadow-sm">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-1.5 h-4 bg-[#042D62] rounded-full"></div>
-            <h3 className="text-sm font-semibold text-[#050A30] dark:text-white uppercase tracking-wide">Acciones Rápidas</h3>
-          </div>
+        <div className="bg-white dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm">
+          <h3 className="text-sm font-semibold text-[#050A30] dark:text-white uppercase tracking-widest mb-4 pl-0.5">Acciones Rápidas</h3>
           <div className="flex flex-wrap gap-2">
             <Link
               to="/solicitudes/nueva"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-[#042D62] text-white rounded-lg hover:bg-[#042D62]/90 transition-colors text-sm font-medium"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#042D62] text-white rounded-lg hover:bg-[#042D62]/90 transition-all duration-200 text-sm font-medium shadow-sm hover:shadow-md"
             >
               <FileText className="h-4 w-4" />
               Nueva Solicitud
             </Link>
             <Link
               to="/solicitudes"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-900 text-[#042D62] dark:text-white border border-[#042D62]/20 dark:border-[#042D62]/40 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-sm font-medium"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200 text-sm font-medium"
             >
               Ver todas
             </Link>
             <Link
               to="/solicitudes?status=pendiente"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-900 text-[#042D62] dark:text-white border border-[#042D62]/20 dark:border-[#042D62]/40 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-sm font-medium"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200 text-sm font-medium"
             >
               Pendientes
             </Link>
             <Link
               to="/solicitudes?status=aprobado"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-900 text-[#042D62] dark:text-white border border-[#042D62]/20 dark:border-[#042D62]/40 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors text-sm font-medium"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200 text-sm font-medium"
             >
               Aprobadas
             </Link>

@@ -8,26 +8,45 @@ interface SidebarProps {
   isCollapsed?: boolean;
 }
 
-const menuItems = [
+interface MenuSection {
+  title: string;
+  items: {
+    label: string;
+    icon: React.ComponentType<any>;
+    href: string;
+  }[];
+}
+
+const menuSections: MenuSection[] = [
   {
-    label: "Dashboard",
-    icon: LayoutDashboard,
-    href: "/",
+    title: "Principal",
+    items: [
+      {
+        label: "Dashboard",
+        icon: LayoutDashboard,
+        href: "/",
+      },
+      {
+        label: "Solicitudes",
+        icon: FileText,
+        href: "/solicitudes",
+      },
+    ],
   },
   {
-    label: "Solicitudes",
-    icon: FileText,
-    href: "/solicitudes",
-  },
-  {
-    label: "Usuarios",
-    icon: Users,
-    href: "/usuarios",
-  },
-  {
-    label: "Configuración",
-    icon: Settings,
-    href: "/configuracion",
+    title: "Administración",
+    items: [
+      {
+        label: "Usuarios",
+        icon: Users,
+        href: "/usuarios",
+      },
+      {
+        label: "Configuración",
+        icon: Settings,
+        href: "/configuracion",
+      },
+    ],
   },
 ];
 

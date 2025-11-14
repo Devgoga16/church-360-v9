@@ -74,9 +74,9 @@ export default function Solicitudes() {
   }, [solicitudes, searchTerm]);
 
   const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat("es-ES", {
+    return new Intl.NumberFormat("es-PE", {
       style: "currency",
-      currency: "USD",
+      currency: "PEN",
     }).format(value);
   };
 

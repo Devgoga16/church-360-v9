@@ -549,7 +549,11 @@ export default function NuevaSolicitud() {
                   </button>
                   <button
                     type="button"
-                    onClick={() => setPaymentType(PaymentType.TERCEROS)}
+                    onClick={() => {
+                      setPaymentType(PaymentType.TERCEROS);
+                      setSelectedAccountId("");
+                      setAccountData({ bankName: "", accountNumber: "", documentType: "", document: "", cci: "" });
+                    }}
                     className={`py-3 px-4 rounded-lg border-2 font-medium transition-all text-sm ${
                       paymentType === PaymentType.TERCEROS
                         ? "border-[#042D62] bg-[#042D62]/10 text-[#042D62] dark:bg-[#042D62]/20"

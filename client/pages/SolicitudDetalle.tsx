@@ -356,7 +356,7 @@ export default function SolicitudDetalle() {
             </h2>
 
             <div className="space-y-3">
-              {solicitud.approvals.map((approval) => (
+              {solicitud.approvals.map((approval, index) => (
                 <div
                   key={approval.id || `approval-${approval.approverUserId}-${approval.approvalOrder}`}
                   className="flex items-start justify-between p-4 bg-slate-50 dark:bg-slate-900/30 rounded-lg border border-slate-200 dark:border-slate-800"

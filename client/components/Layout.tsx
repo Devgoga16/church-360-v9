@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Header } from "./Header";
 import { Sidebar } from "./Sidebar";
@@ -11,6 +11,19 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
+  // Load sidebar state from localStorage on mount
+  useEffect(() => {
+    const savedState = localStorage.getItem("sidebarCollapsed");
+    if (savedState !== null) {
+      setSidebarCollapsed(JSON.parse(savedState));
+    }
+  }, []);
+
+  // Save sidebar state to localStorage when it changes
+  useEffect(() => {
+    localStorage.setItem("sidebarCollapsed", JSON.stringify(sidebarCollapsed));
+  }, [sidebarCollapsed]);
 
   return (
     <div className="flex flex-col h-screen bg-white dark:bg-slate-950">

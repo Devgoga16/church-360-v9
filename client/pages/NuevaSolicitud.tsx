@@ -330,11 +330,12 @@ export default function NuevaSolicitud() {
                 <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                   Descripción General *
                 </label>
-                <Textarea
+                <Input
+                  type="text"
                   placeholder="Describe los detalles de la solicitud..."
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  className="w-full h-10"
+                  className="w-full"
                 />
               </div>
 

@@ -3,8 +3,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { StatusBadge } from "@/components/StatusBadge";
 import { Button } from "@/components/ui/button";
-import { Solicitud, PaymentType, ApprovalStatus } from "@shared/api";
-import { ArrowLeft, FileText, CheckCircle, XCircle } from "lucide-react";
+import {
+  Solicitud,
+  PaymentType,
+  ApprovalStatus,
+  WorkflowStep,
+  ProofOfPaymentStatus,
+} from "@shared/api";
+import { ArrowLeft, FileText, CheckCircle, XCircle, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export default function SolicitudDetalle() {

@@ -418,9 +418,9 @@ export default function SolicitudDetalle() {
             </h2>
 
             <div className="space-y-2">
-              {solicitud.attachments.map((attachment) => (
+              {solicitud.attachments.map((attachment, index) => (
                 <div
-                  key={attachment.id}
+                  key={attachment.id || `attachment-${index}`}
                   className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900/30 rounded-lg border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors"
                 >
                   <div className="flex items-center gap-3 flex-1 min-w-0">

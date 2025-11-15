@@ -546,6 +546,89 @@ export default function NuevaSolicitud() {
                 </div>
               </div>
 
+              {/* Payment Detail for Uno Mismo */}
+              {paymentType === PaymentType.UNO_MISMO && (
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                      Seleccionar Cuenta *
+                    </label>
+                    <Select value={selectedAccountId} onValueChange={handleSelectAccount}>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Seleccionar una cuenta" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {mockAccounts.map((account) => (
+                          <SelectItem key={account.id} value={account.id}>
+                            {account.bankName} - {account.accountNumber}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  {selectedAccountId && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-slate-50 dark:bg-slate-900/30 rounded-lg border border-slate-200 dark:border-slate-800">
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                          Banco Beneficiario
+                        </label>
+                        <Input
+                          type="text"
+                          value={accountData.bankName}
+                          disabled
+                          className="bg-slate-100 dark:bg-slate-900"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                          Número de Cuenta
+                        </label>
+                        <Input
+                          type="text"
+                          value={accountData.accountNumber}
+                          disabled
+                          className="bg-slate-100 dark:bg-slate-900"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                          Tipo de Documento
+                        </label>
+                        <Input
+                          type="text"
+                          value={accountData.documentType}
+                          disabled
+                          className="bg-slate-100 dark:bg-slate-900"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                          Documento
+                        </label>
+                        <Input
+                          type="text"
+                          value={accountData.document}
+                          disabled
+                          className="bg-slate-100 dark:bg-slate-900"
+                        />
+                      </div>
+                      <div className="md:col-span-2">
+                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                          Código Interbancario (CCI)
+                        </label>
+                        <Input
+                          type="text"
+                          value={accountData.cci}
+                          disabled
+                          className="bg-slate-100 dark:bg-slate-900"
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
               {/* Payment Detail for Terceros */}
               {paymentType === PaymentType.TERCEROS && (
                 <div>

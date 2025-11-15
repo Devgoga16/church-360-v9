@@ -252,7 +252,7 @@ export default function NuevaSolicitud() {
 
       let finalPaymentDetail = "";
       if (paymentType === PaymentType.TERCEROS) {
-        finalPaymentDetail = paymentDetail;
+        finalPaymentDetail = `Banco: ${thirdPartyData.bankName}\nCuenta: ${thirdPartyData.accountNumber}\nTipo de Documento: ${thirdPartyData.documentType}\nDocumento: ${thirdPartyData.document}\nCCI: ${thirdPartyData.cci}`;
       } else if (paymentType === PaymentType.UNO_MISMO) {
         finalPaymentDetail = `Banco: ${accountData.bankName}\nCuenta: ${accountData.accountNumber}\nCCI: ${accountData.cci}`;
       }

@@ -18,11 +18,13 @@ const statusOptions: Array<{ value: SolicitudStatus; label: string }> = [
 
 export default function Solicitudes() {
   const [solicitudes, setSolicitudes] = useState<Solicitud[]>([]);
-  const [filteredSolicitudes, setFilteredSolicitudes] = useState<Solicitud[]>([]);
+  const [filteredSolicitudes, setFilteredSolicitudes] = useState<Solicitud[]>(
+    [],
+  );
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedStatus, setSelectedStatus] = useState<SolicitudStatus | "">(
-    ""
+    "",
   );
   const [searchParams] = useSearchParams();
 
@@ -66,7 +68,7 @@ export default function Solicitudes() {
         (s) =>
           s.code.toLowerCase().includes(term) ||
           s.title.toLowerCase().includes(term) ||
-          s.ministryName?.toLowerCase().includes(term)
+          s.ministryName?.toLowerCase().includes(term),
       );
     }
 
@@ -74,9 +76,9 @@ export default function Solicitudes() {
   }, [solicitudes, searchTerm]);
 
   const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat("es-ES", {
+    return new Intl.NumberFormat("es-PE", {
       style: "currency",
-      currency: "USD",
+      currency: "PEN",
     }).format(value);
   };
 
@@ -237,7 +239,10 @@ export default function Solicitudes() {
                 </p>
                 <p className="text-2xl font-bold text-slate-900 dark:text-white">
                   {formatCurrency(
-                    filteredSolicitudes.reduce((sum, s) => sum + s.totalAmount, 0)
+                    filteredSolicitudes.reduce(
+                      (sum, s) => sum + s.totalAmount,
+                      0,
+                    ),
                   )}
                 </p>
               </div>
@@ -246,11 +251,14 @@ export default function Solicitudes() {
                   Aprobadas
                 </p>
                 <p className="text-2xl font-bold text-success">
-                  {filteredSolicitudes.filter((s) =>
-                    [SolicitudStatus.APROBADO, SolicitudStatus.COMPLETADO].includes(
-                      s.status
-                    )
-                  ).length}
+                  {
+                    filteredSolicitudes.filter((s) =>
+                      [
+                        SolicitudStatus.APROBADO,
+                        SolicitudStatus.COMPLETADO,
+                      ].includes(s.status),
+                    ).length
+                  }
                 </p>
               </div>
               <div>
@@ -258,11 +266,14 @@ export default function Solicitudes() {
                   Pendientes
                 </p>
                 <p className="text-2xl font-bold text-warning">
-                  {filteredSolicitudes.filter((s) =>
-                    [SolicitudStatus.PENDIENTE, SolicitudStatus.EN_REVISION].includes(
-                      s.status
-                    )
-                  ).length}
+                  {
+                    filteredSolicitudes.filter((s) =>
+                      [
+                        SolicitudStatus.PENDIENTE,
+                        SolicitudStatus.EN_REVISION,
+                      ].includes(s.status),
+                    ).length
+                  }
                 </p>
               </div>
             </div>

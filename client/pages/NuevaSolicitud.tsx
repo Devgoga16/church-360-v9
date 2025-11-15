@@ -261,13 +261,13 @@ export default function NuevaSolicitud() {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Ministerio y Encargado */}
+          {/* Información del Solicitante */}
           <div className="bg-white dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800 p-6 space-y-4">
             <h2 className="text-lg font-semibold text-[#050A30] dark:text-white">
-              Información General
+              Información del Solicitante
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {/* Ministerio */}
               <div>
                 <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
@@ -311,20 +311,27 @@ export default function NuevaSolicitud() {
                   </SelectContent>
                 </Select>
               </div>
-            </div>
 
-            {/* Solicitante */}
-            <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                Solicitante
-              </label>
-              <Input
-                type="text"
-                value={requesterName}
-                disabled
-                className="bg-slate-100 dark:bg-slate-900"
-              />
+              {/* Solicitante */}
+              <div>
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                  Solicitante
+                </label>
+                <Input
+                  type="text"
+                  value={requesterName}
+                  disabled
+                  className="bg-slate-100 dark:bg-slate-900"
+                />
+              </div>
             </div>
+          </div>
+
+          {/* Detalles de la Solicitud */}
+          <div className="bg-white dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800 p-6 space-y-4">
+            <h2 className="text-lg font-semibold text-[#050A30] dark:text-white">
+              Detalles de la Solicitud
+            </h2>
 
             {/* Título */}
             <div>

@@ -265,9 +265,9 @@ export default function SolicitudDetalle() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
-                  {solicitud.items.map((item) => (
+                  {solicitud.items.map((item, index) => (
                     <tr
-                      key={item.id}
+                      key={item.id || item.itemNumber || index}
                       className="hover:bg-slate-50/50 dark:hover:bg-slate-900/30"
                     >
                       <td className="py-3 px-2">

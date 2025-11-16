@@ -169,22 +169,20 @@ export default function SolicitudDetalle() {
               Línea de tiempo
             </h2>
 
-            <div className="overflow-x-auto">
-              <div className="relative flex gap-2 min-w-min pb-4">
-                {solicitud.workflowSteps.map((step, index) => (
-                  <div key={step.step || index} className="flex flex-col items-center flex-shrink-0 w-40">
-                    {/* Timeline Connector */}
-                    {index < solicitud.workflowSteps.length - 1 && (
-                      <div className="absolute top-4 left-20 w-8 h-1 bg-green-200 dark:bg-green-900/30" style={{width: 'calc(160px + 8px)'}} />
-                    )}
+            <div className="w-full">
+              <div className="relative flex gap-0 w-full justify-between items-flex-start pt-8 pb-4">
+                {/* Background connector line */}
+                <div className="absolute top-4 left-0 right-0 h-1 bg-green-200 dark:bg-green-900/30 z-0" />
 
+                {solicitud.workflowSteps.map((step, index) => (
+                  <div key={step.step || index} className="flex flex-col items-center flex-1 relative">
                     {/* Timeline Circle */}
-                    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-green-600 dark:bg-green-500 border-4 border-white dark:border-slate-950 text-white relative z-10">
+                    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-green-600 dark:bg-green-500 border-4 border-white dark:border-slate-950 text-white relative z-10 flex-shrink-0">
                       <CheckCircle className="h-5 w-5" />
                     </div>
 
                     {/* Step Content */}
-                    <div className="mt-4 text-center flex-1">
+                    <div className="mt-4 text-center w-full px-2">
                       <h3 className="font-semibold text-[#050A30] dark:text-white text-sm leading-tight">
                         {getWorkflowStepLabel(step.step)}
                       </h3>

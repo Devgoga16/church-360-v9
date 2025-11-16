@@ -405,10 +405,12 @@ export default function SolicitudDetalle() {
               <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                 Tipo de Abono
               </label>
-              <div className="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
-                {solicitud.paymentType === PaymentType.UNO_MISMO
-                  ? "A Cuenta Propia"
-                  : "A Terceros"}
+              <div className="border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 bg-slate-50 dark:bg-slate-900/30">
+                <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                  {solicitud.paymentType === PaymentType.UNO_MISMO
+                    ? "A Cuenta Propia"
+                    : "A Terceros"}
+                </span>
               </div>
             </div>
           </div>

@@ -140,17 +140,17 @@ export default function Solicitudes() {
         </div>
 
         {/* Filters */}
-        <div className="bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 p-4 space-y-4">
-          <div className="flex flex-col sm:flex-row gap-4">
+        <div className="bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 p-3 space-y-3">
+          <div className="flex flex-col sm:flex-row gap-3">
             {/* Search */}
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
+              <Search className="absolute left-2.5 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
               <input
                 type="text"
                 placeholder="Buscar por código, título o ministerio..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-slate-900 dark:text-white placeholder-slate-500"
+                className="w-full pl-9 pr-3 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm text-slate-900 dark:text-white placeholder-slate-500"
               />
             </div>
 
@@ -160,7 +160,7 @@ export default function Solicitudes() {
               onChange={(e) =>
                 setSelectedStatus(e.target.value as SolicitudStatus | "")
               }
-              className="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-slate-900 dark:text-white"
+              className="px-3 py-1.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm text-slate-900 dark:text-white"
             >
               <option value="">Todos los estados</option>
               {statusOptions.map((option) => (

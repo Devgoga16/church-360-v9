@@ -95,12 +95,12 @@ export default function Solicitudes() {
     <Layout>
       <div className="p-6 md:p-8 max-w-7xl mx-auto space-y-6">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-[#050A30] dark:text-white">
+            <h1 className="text-xl md:text-2xl font-bold text-[#050A30] dark:text-white">
               Solicitudes Financieras
             </h1>
-            <p className="text-[#173747] dark:text-slate-400 mt-1">
+            <p className="text-xs md:text-sm text-[#173747] dark:text-slate-400 mt-1">
               Gestiona y da seguimiento a todas las solicitudes
             </p>
           </div>

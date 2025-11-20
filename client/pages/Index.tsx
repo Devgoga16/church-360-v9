@@ -106,7 +106,7 @@ export default function Index() {
           <div className="flex flex-wrap gap-2">
             <Link
               to="/solicitudes/nueva"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#042D62] text-white rounded-lg hover:bg-[#042D62]/90 transition-all duration-200 text-sm font-medium shadow-sm hover:shadow-md"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#042D62] text-white rounded-lg hover:bg-[#042D62]/90 transition-all duration-200 text-xs md:text-sm font-medium shadow-sm hover:shadow-md"
             >
               <FileText className="h-4 w-4" />
               Nueva Solicitud

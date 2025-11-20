@@ -483,20 +483,20 @@ export default function NuevaSolicitud() {
               </Button>
             </div>
 
-            <div className="overflow-x-auto h-96 overflow-y-auto">
-              <table className="w-full text-sm">
+            <div className="overflow-x-auto h-80 overflow-y-auto">
+              <table className="w-full text-xs md:text-sm">
                 <thead>
                   <tr className="border-b border-slate-200 dark:border-slate-800">
-                    <th className="text-left py-3 px-2 font-semibold text-slate-700 dark:text-slate-300 w-12">
+                    <th className="text-left py-2 px-2 font-semibold text-slate-700 dark:text-slate-300 w-8">
                       #
                     </th>
-                    <th className="text-left py-3 px-2 font-semibold text-slate-700 dark:text-slate-300">
+                    <th className="text-left py-2 px-2 font-semibold text-slate-700 dark:text-slate-300">
                       Descripción
                     </th>
-                    <th className="text-left py-3 px-2 font-semibold text-slate-700 dark:text-slate-300 w-28">
+                    <th className="text-left py-2 px-2 font-semibold text-slate-700 dark:text-slate-300 w-24">
                       Monto
                     </th>
-                    <th className="text-center py-3 px-2 font-semibold text-slate-700 dark:text-slate-300 w-10"></th>
+                    <th className="text-center py-2 px-2 font-semibold text-slate-700 dark:text-slate-300 w-8"></th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
@@ -505,12 +505,12 @@ export default function NuevaSolicitud() {
                       key={index}
                       className="hover:bg-slate-50/50 dark:hover:bg-slate-900/30"
                     >
-                      <td className="py-3 px-2">
-                        <span className="text-slate-700 dark:text-slate-300">
+                      <td className="py-2 px-2">
+                        <span className="text-slate-700 dark:text-slate-300 text-xs">
                           {item.itemNumber}
                         </span>
                       </td>
-                      <td className="py-3 px-2">
+                      <td className="py-2 px-2">
                         <Input
                           type="text"
                           placeholder="Descripción del item"
@@ -522,10 +522,10 @@ export default function NuevaSolicitud() {
                               e.target.value,
                             )
                           }
-                          className="w-full text-sm"
+                          className="w-full text-xs h-7"
                         />
                       </td>
-                      <td className="py-3 px-2">
+                      <td className="py-2 px-2">
                         <Input
                           type="number"
                           placeholder="Monto"
@@ -537,16 +537,16 @@ export default function NuevaSolicitud() {
                               parseFloat(e.target.value) || 0,
                             )
                           }
-                          className="w-full text-sm bg-slate-100 dark:bg-slate-900"
+                          className="w-full text-xs h-7 bg-slate-100 dark:bg-slate-900"
                         />
                       </td>
-                      <td className="py-3 px-2 text-center">
+                      <td className="py-2 px-2 text-center">
                         <button
                           type="button"
                           onClick={() => handleRemoveItem(index)}
-                          className="inline-flex items-center justify-center p-1 text-red-600 hover:bg-red-50 dark:hover:bg-red-950/30 rounded"
+                          className="inline-flex items-center justify-center p-0.5 text-red-600 hover:bg-red-50 dark:hover:bg-red-950/30 rounded"
                         >
-                          <Trash2 className="h-4 w-4" />
+                          <Trash2 className="h-3.5 w-3.5" />
                         </button>
                       </td>
                     </tr>
@@ -556,12 +556,12 @@ export default function NuevaSolicitud() {
             </div>
 
             {/* Total */}
-            <div className="flex justify-end pt-4 border-t border-slate-200 dark:border-slate-800">
-              <div className="flex items-center gap-4">
-                <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+            <div className="flex justify-end pt-3 border-t border-slate-200 dark:border-slate-800">
+              <div className="flex items-center gap-3">
+                <span className="text-xs md:text-sm font-medium text-slate-700 dark:text-slate-300">
                   Total:
                 </span>
-                <span className="text-2xl font-bold text-[#050A30] dark:text-white">
+                <span className="text-lg md:text-xl font-bold text-[#050A30] dark:text-white">
                   {formatCurrency(getTotalAmount())}
                 </span>
               </div>

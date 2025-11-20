@@ -52,13 +52,13 @@ export default function Index() {
 
   return (
     <Layout>
-      <div className="p-6 md:p-8 space-y-6">
+      <div className="p-4 md:p-6 space-y-4">
         {/* Header */}
-        <div className="space-y-1">
-          <h1 className="text-3xl font-bold text-[#050A30] dark:text-white">
+        <div className="space-y-0.5">
+          <h1 className="text-xl md:text-2xl font-bold text-[#050A30] dark:text-white">
             Bienvenido a Iglesia 360
           </h1>
-          <p className="text-sm text-slate-600 dark:text-slate-400">
+          <p className="text-xs md:text-sm text-slate-600 dark:text-slate-400">
             Sistema integral de gestión de solicitudes financieras
           </p>
         </div>

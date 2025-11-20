@@ -184,33 +184,33 @@ export default function Solicitudes() {
           </div>
         ) : filteredSolicitudes.length > 0 ? (
           viewMode === "grid" ? (
-            <div className="space-y-3">
+            <div className="space-y-2">
               {filteredSolicitudes.map((solicitud) => (
                 <Link
                   key={solicitud.id}
                   to={`/solicitudes/${solicitud.id}`}
-                  className="block bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-4 md:p-6 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-md transition-all duration-200 group"
+                  className="block bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-3 md:p-4 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-md transition-all duration-200 group"
                 >
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-start gap-3 mb-2">
-                        <div>
-                          <h3 className="font-bold text-[#050A30] dark:text-white group-hover:text-primary transition-colors line-clamp-1">
+                      <div className="flex items-start gap-2 mb-1.5">
+                        <div className="flex-1">
+                          <h3 className="font-bold text-sm md:text-base text-[#050A30] dark:text-white group-hover:text-primary transition-colors line-clamp-1">
                             {solicitud.title}
                           </h3>
-                          <p className="text-sm text-[#173747] dark:text-slate-400">
+                          <p className="text-xs text-[#173747] dark:text-slate-400">
                             {solicitud.code} • {solicitud.ministryName}
                           </p>
                         </div>
                       </div>
-                      <p className="text-sm text-[#173747] dark:text-slate-400 line-clamp-1">
+                      <p className="text-xs text-[#173747] dark:text-slate-400 line-clamp-1">
                         {solicitud.description}
                       </p>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-4 md:gap-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 md:gap-4">
                       <div className="text-right">
-                        <p className="font-bold text-[#050A30] dark:text-white">
+                        <p className="font-bold text-sm md:text-base text-[#050A30] dark:text-white">
                           {formatCurrency(solicitud.totalAmount)}
                         </p>
                         <p className="text-xs text-[#173747] dark:text-slate-400">
@@ -218,9 +218,9 @@ export default function Solicitudes() {
                         </p>
                       </div>
 
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-2">
                         <StatusBadge status={solicitud.status} />
-                        <ChevronRight className="h-5 w-5 text-slate-400 group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                        <ChevronRight className="h-4 w-4 text-slate-400 group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0" />
                       </div>
                     </div>
                   </div>

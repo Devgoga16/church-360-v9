@@ -229,25 +229,25 @@ export default function Solicitudes() {
             </div>
           ) : (
             <div className="bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 overflow-hidden">
-              <table className="w-full">
+              <table className="w-full text-xs md:text-sm">
                 <thead>
                   <tr className="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800">
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900 dark:text-white">
+                    <th className="px-3 py-2 text-left font-semibold text-slate-900 dark:text-white">
                       Código
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900 dark:text-white">
+                    <th className="px-3 py-2 text-left font-semibold text-slate-900 dark:text-white">
                       Título
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900 dark:text-white">
+                    <th className="px-3 py-2 text-left font-semibold text-slate-900 dark:text-white">
                       Ministerio
                     </th>
-                    <th className="px-6 py-4 text-right text-sm font-semibold text-slate-900 dark:text-white">
+                    <th className="px-3 py-2 text-right font-semibold text-slate-900 dark:text-white">
                       Monto
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900 dark:text-white">
+                    <th className="px-3 py-2 text-left font-semibold text-slate-900 dark:text-white">
                       Fecha
                     </th>
-                    <th className="px-6 py-4 text-center text-sm font-semibold text-slate-900 dark:text-white">
+                    <th className="px-3 py-2 text-center font-semibold text-slate-900 dark:text-white">
                       Estado
                     </th>
                   </tr>
@@ -261,22 +261,22 @@ export default function Solicitudes() {
                         window.location.href = `/solicitudes/${solicitud.id}`;
                       }}
                     >
-                      <td className="px-6 py-4 text-sm font-medium text-[#042D62] dark:text-primary">
+                      <td className="px-3 py-2 font-medium text-[#042D62] dark:text-primary">
                         {solicitud.code}
                       </td>
-                      <td className="px-6 py-4 text-sm text-slate-900 dark:text-white">
+                      <td className="px-3 py-2 text-slate-900 dark:text-white">
                         <div className="line-clamp-1">{solicitud.title}</div>
                       </td>
-                      <td className="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">
+                      <td className="px-3 py-2 text-slate-600 dark:text-slate-400">
                         {solicitud.ministryName}
                       </td>
-                      <td className="px-6 py-4 text-sm font-semibold text-slate-900 dark:text-white text-right">
+                      <td className="px-3 py-2 font-semibold text-slate-900 dark:text-white text-right">
                         {formatCurrency(solicitud.totalAmount)}
                       </td>
-                      <td className="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">
+                      <td className="px-3 py-2 text-slate-600 dark:text-slate-400">
                         {formatDate(solicitud.createdAt)}
                       </td>
-                      <td className="px-6 py-4 text-center">
+                      <td className="px-3 py-2 text-center">
                         <StatusBadge status={solicitud.status} />
                       </td>
                     </tr>

@@ -569,8 +569,8 @@ export default function NuevaSolicitud() {
           </div>
 
           {/* Detalle del Abono */}
-          <div className="bg-white dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800 p-6 space-y-4">
-            <h2 className="text-lg font-semibold text-[#050A30] dark:text-white">
+          <div className="bg-white dark:bg-slate-950 rounded-xl border border-slate-200 dark:border-slate-800 p-4 space-y-3">
+            <h2 className="text-base font-semibold text-[#050A30] dark:text-white">
               Detalle del Abono
             </h2>
 

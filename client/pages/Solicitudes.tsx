@@ -104,13 +104,39 @@ export default function Solicitudes() {
               Gestiona y da seguimiento a todas las solicitudes
             </p>
           </div>
-          <Link
-            to="/solicitudes/nueva"
-            className="inline-flex items-center justify-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl"
-          >
-            <Plus className="h-5 w-5" />
-            Nueva Solicitud
-          </Link>
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="flex border border-slate-200 dark:border-slate-800 rounded-lg bg-white dark:bg-slate-900">
+              <button
+                onClick={() => setViewMode("grid")}
+                className={`p-2 transition-colors ${
+                  viewMode === "grid"
+                    ? "bg-primary text-white"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                }`}
+                title="Vista de tarjetas"
+              >
+                <Grid className="h-5 w-5" />
+              </button>
+              <button
+                onClick={() => setViewMode("table")}
+                className={`p-2 transition-colors ${
+                  viewMode === "table"
+                    ? "bg-primary text-white"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                }`}
+                title="Vista de tabla"
+              >
+                <Table className="h-5 w-5" />
+              </button>
+            </div>
+            <Link
+              to="/solicitudes/nueva"
+              className="inline-flex items-center justify-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl"
+            >
+              <Plus className="h-5 w-5" />
+              Nueva Solicitud
+            </Link>
+          </div>
         </div>
 
         {/* Filters */}

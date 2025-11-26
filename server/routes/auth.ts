@@ -79,11 +79,11 @@ export const login: RequestHandler = (req, res) => {
         id: user.id,
         email: user.email,
         name: user.name,
-        roles: user.roles as any,
+        roles: user.roles,
       },
     };
 
-    res.json(response);
+    return res.json(response);
   } catch (error) {
     console.error("Login error:", error);
     res.status(500).json({

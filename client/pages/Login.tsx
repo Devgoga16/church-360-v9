@@ -8,7 +8,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +21,7 @@ export default function Login() {
     setIsLoading(true);
 
     try {
-      await login(email, password);
+      await login(username, password);
       navigate("/");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed");
@@ -30,14 +30,14 @@ export default function Login() {
     }
   };
 
-  const quickLogin = async (testEmail: string) => {
-    setEmail(testEmail);
-    setPassword("password");
+  const quickLogin = async (testUsername: string, testPassword: string) => {
+    setUsername(testUsername);
+    setPassword(testPassword);
     setError("");
     setIsLoading(true);
 
     try {
-      await login(testEmail, "password");
+      await login(testUsername, testPassword);
       navigate("/");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed");
@@ -47,11 +47,11 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#042D62] to-[#0a4a9f] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#26629c] to-[#1a4269] flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="bg-white rounded-2xl shadow-2xl p-8">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-[#042D62] mb-2">
+            <h1 className="text-3xl font-bold text-[#26629c] mb-2">
               Iglesia 360
             </h1>
             <p className="text-slate-600">Gestión integral para tu iglesia</p>
@@ -66,15 +66,15 @@ export default function Login() {
 
           <form onSubmit={handleSubmit} className="space-y-4 mb-6">
             <div>
-              <Label htmlFor="email" className="text-slate-700 font-medium">
-                Correo Electrónico
+              <Label htmlFor="username" className="text-slate-700 font-medium">
+                Usuario
               </Label>
               <Input
-                id="email"
-                type="email"
-                placeholder="tu@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                id="username"
+                type="text"
+                placeholder="tu usuario"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 required
                 className="mt-2"
               />
@@ -98,7 +98,7 @@ export default function Login() {
             <Button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-[#042D62] hover:bg-[#031f42] text-white font-semibold py-2"
+              className="w-full bg-[#26629c] hover:bg-[#1a4269] text-white font-semibold py-2 transition-colors"
             >
               {isLoading ? "Iniciando sesión..." : "Iniciar Sesión"}
             </Button>
@@ -115,30 +115,20 @@ export default function Login() {
 
           <div className="space-y-3">
             <button
-              onClick={() => quickLogin("admin@iglesia360.com")}
+              onClick={() => quickLogin("admin", "admin123")}
               disabled={isLoading}
-              className="w-full p-3 border-2 border-slate-200 rounded-lg hover:border-[#042D62] hover:bg-blue-50 transition-all text-left"
-            >
-              <div className="font-semibold text-slate-900">Admin (1 rol)</div>
-              <div className="text-sm text-slate-600">admin@iglesia360.com</div>
-            </button>
-
-            <button
-              onClick={() => quickLogin("director@iglesia360.com")}
-              disabled={isLoading}
-              className="w-full p-3 border-2 border-slate-200 rounded-lg hover:border-[#042D62] hover:bg-blue-50 transition-all text-left"
+              className="w-full p-3 border-2 border-slate-200 rounded-lg hover:border-[#26629c] hover:bg-[#26629c]/5 transition-all text-left"
             >
               <div className="font-semibold text-slate-900">
-                Director (3 roles)
+                Admin (2 roles)
               </div>
-              <div className="text-sm text-slate-600">
-                director@iglesia360.com
-              </div>
+              <div className="text-sm text-slate-600">admin@iglesia360.com</div>
             </button>
           </div>
 
           <p className="text-center text-xs text-slate-500 mt-6">
-            Contraseña de prueba: <span className="font-mono">password</span>
+            Credenciales: <span className="font-mono">admin</span> /{" "}
+            <span className="font-mono">admin123</span>
           </p>
         </div>
       </div>

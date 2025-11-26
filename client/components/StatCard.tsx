@@ -40,7 +40,7 @@ export function StatCard({
                 className={cn(
                   "text-xs font-medium",
                   trend.direction === "up"
-                    ? "text-[#042D62]"
+                    ? "text-[#26629c]"
                     : "text-slate-500",
                 )}
               >
@@ -50,7 +50,7 @@ export function StatCard({
           </div>
         </div>
         {icon && (
-          <div className="text-[#042D62] opacity-40 flex-shrink-0">{icon}</div>
+          <div className="text-[#26629c] opacity-40 flex-shrink-0">{icon}</div>
         )}
       </div>
     </div>

@@ -82,7 +82,7 @@ export function Header({ onToggleSidebar }: HeaderProps) {
                 <div className="absolute right-0 mt-2 w-44 bg-white dark:bg-slate-900 rounded-lg shadow-lg border border-slate-200 dark:border-slate-800 overflow-hidden z-50">
                   <div className="px-3 py-2 border-b border-slate-200 dark:border-slate-800">
                     <p className="text-xs font-medium text-[#050A30] dark:text-white">
-                      {user.name}
+                      {userName}
                     </p>
                     <p className="text-xs text-[#173747] dark:text-slate-500">
                       {user.email}

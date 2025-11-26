@@ -296,7 +296,7 @@ export function Sidebar({
             isCollapsed ? "px-2" : "px-4 py-8",
           )}
         >
-          {roleStructure.map((role) => (
+          {filteredRoles.map((role) => (
             <div key={role.label} className="mb-6">
               <button
                 onClick={() => !isCollapsed && toggleRole(role.label)}

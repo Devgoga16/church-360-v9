@@ -8,7 +8,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +21,7 @@ export default function Login() {
     setIsLoading(true);
 
     try {
-      await login(email, password);
+      await login(username, password);
       navigate("/");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed");
@@ -30,14 +30,14 @@ export default function Login() {
     }
   };
 
-  const quickLogin = async (testEmail: string) => {
-    setEmail(testEmail);
-    setPassword("password");
+  const quickLogin = async (testUsername: string, testPassword: string) => {
+    setUsername(testUsername);
+    setPassword(testPassword);
     setError("");
     setIsLoading(true);
 
     try {
-      await login(testEmail, "password");
+      await login(testUsername, testPassword);
       navigate("/");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed");

@@ -1,0 +1,44 @@
+{
+  "faqs": [
+    {
+      "id": 1,
+      "question": "¿Cómo creo una nueva solicitud de eventos?",
+      "answer": "Para crear una nueva solicitud de eventos, dirígete a la sección 'Solicitudes' en el menú lateral y haz clic en el botón 'Nueva Solicitud'. Completa el formulario con los detalles del evento, incluyendo fecha, hora, tipo de evento y descripción. Luego haz clic en 'Enviar'."
+    },
+    {
+      "id": 2,
+      "question": "¿Cuál es el proceso de aprobación de solicitudes?",
+      "answer": "Las solicitudes pasan por un proceso de revisión donde el Administrador y el Pastor Principal verifican los detalles. Recibirás notificaciones por correo electrónico sobre el estado de tu solicitud. El proceso típicamente toma entre 24-48 horas."
+    },
+    {
+      "id": 3,
+      "question": "¿Cómo puedo ver el historial de mis solicitudes?",
+      "answer": "Accede a la sección 'Solicitudes' en el menú lateral para ver todas tus solicitudes. Puedes filtrar por estado (Pendiente, Aprobado, Rechazado) y hacer clic en cualquier solicitud para ver más detalles."
+    },
+    {
+      "id": 4,
+      "question": "¿Cómo gestiono el presupuesto para eventos?",
+      "answer": "Si tienes rol de Tesorero, puedes acceder a la sección 'Finanzas' donde puedes ver presupuestos, aprobar gastos y generar reportes de ingresos y egresos por evento."
+    },
+    {
+      "id": 5,
+      "question": "¿Qué debo hacer si olvido mi contraseña?",
+      "answer": "En la página de inicio de sesión, haz clic en 'Olvidé mi contraseña' e ingresa tu correo electrónico. Recibirás un enlace para reestablecer tu contraseña en tu bandeja de entrada."
+    },
+    {
+      "id": 6,
+      "question": "¿Puedo editar una solicitud después de enviarla?",
+      "answer": "Sí, puedes editar solicitudes que estén en estado 'Pendiente'. Una vez que ha sido aprobada o rechazada, ya no se pueden realizar cambios. Si necesitas modificaciones, puedes crear una nueva solicitud."
+    },
+    {
+      "id": 7,
+      "question": "¿Cómo reporto un problema técnico?",
+      "answer": "Si experimentas problemas técnicos, utiliza el botón 'Soporte' en la parte inferior del menú lateral para contactarnos. Puedes describir el problema en el chatbot o enviar un correo a soporte@iglesia360.com."
+    },
+    {
+      "id": 8,
+      "question": "¿Cuál es la diferencia entre los roles de Administrador, Tesorero y Pastor Principal?",
+      "answer": "El Administrador tiene acceso completo al sistema. El Tesorero gestiona finanzas y presupuestos. El Pastor Principal aprueba eventos y solicitudes. Cada rol tiene permisos específicos según sus responsabilidades."
+    }
+  ]
+}

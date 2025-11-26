@@ -174,17 +174,17 @@ export function Sidebar({
           !isOpen && "-translate-x-full md:translate-x-0",
         )}
       >
-        <nav className={cn("flex-1 overflow-y-auto", isCollapsed ? "px-2" : "px-3 py-6")}>
+        <nav className={cn("flex-1 overflow-y-auto", isCollapsed ? "px-2" : "px-4 py-8")}>
           {roleStructure.map((role) => (
-            <div key={role.label} className="mb-2">
+            <div key={role.label} className="mb-6">
               <button
                 onClick={() => !isCollapsed && toggleRole(role.label)}
                 disabled={isCollapsed}
                 className={cn(
-                  "w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-semibold transition-all duration-200",
+                  "w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-semibold transition-all duration-200",
                   expandedRoles[role.label]
                     ? "bg-[#042D62] text-white shadow-md shadow-[#042D62]/20"
-                    : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800",
+                    : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:shadow-sm",
                   isCollapsed && "flex justify-center",
                 )}
                 title={isCollapsed ? role.label : undefined}
@@ -204,16 +204,16 @@ export function Sidebar({
               </button>
 
               {!isCollapsed && expandedRoles[role.label] && (
-                <div className="mt-1 ml-2 border-l-2 border-slate-200 dark:border-slate-700 pl-0">
+                <div className="mt-3 ml-1 space-y-2 border-l-2 border-slate-300 dark:border-slate-600 pl-3">
                   {role.modules.map((module) => (
-                    <div key={module.label} className="mb-1">
+                    <div key={module.label} className="">
                       <button
                         onClick={() => toggleModule(module.label)}
                         className={cn(
-                          "w-full flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200",
+                          "w-full flex items-center gap-2 px-3 py-2 rounded-md text-xs font-medium transition-all duration-200",
                           expandedModules[module.label]
                             ? "bg-slate-100 dark:bg-slate-800 text-[#042D62] dark:text-blue-400"
-                            : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50",
+                            : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-slate-700 dark:hover:text-slate-300",
                         )}
                       >
                         <span className="flex-1 text-left">{module.label}</span>
@@ -226,7 +226,7 @@ export function Sidebar({
                       </button>
 
                       {expandedModules[module.label] && (
-                        <div className="mt-1 ml-2 border-l-2 border-slate-200 dark:border-slate-700 pl-0 space-y-1">
+                        <div className="mt-2 ml-2 space-y-1.5 border-l border-slate-300 dark:border-slate-600 pl-3">
                           {module.items.map((item) => {
                             const active = isActive(item.href);
                             return (
@@ -235,10 +235,10 @@ export function Sidebar({
                                 to={item.href}
                                 onClick={onClose}
                                 className={cn(
-                                  "flex items-center gap-2 px-3 py-1.5 rounded-md text-xs transition-all duration-200 group",
+                                  "flex items-center gap-2 px-3 py-2 rounded-md text-xs transition-all duration-200 group",
                                   active
                                     ? "bg-[#042D62] text-white shadow-md shadow-[#042D62]/20"
-                                    : "text-slate-600 dark:text-slate-400 hover:text-[#042D62] dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800",
+                                    : "text-slate-600 dark:text-slate-400 hover:text-[#042D62] dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:shadow-sm",
                                 )}
                               >
                                 <span className="flex-1 text-left">{item.label}</span>
@@ -258,8 +258,8 @@ export function Sidebar({
 
         <div
           className={cn(
-            "border-t border-slate-200 dark:border-slate-800",
-            isCollapsed ? "px-2 py-6 flex flex-col items-center" : "px-3 py-6",
+            "border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/30",
+            isCollapsed ? "px-2 py-6 flex flex-col items-center" : "px-4 py-6",
           )}
         >
           <div

@@ -15,6 +15,7 @@ import NuevaSolicitud from "./pages/NuevaSolicitud";
 import SolicitudDetalle from "./pages/SolicitudDetalle";
 import Soporte from "./pages/Soporte";
 import Roles from "./pages/Configuracion/Roles";
+import Modulos from "./pages/Configuracion/Modulos";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -73,6 +74,14 @@ const App = () => (
               element={
                 <ProtectedRoute>
                   <Roles />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/configuracion/modulos"
+              element={
+                <ProtectedRoute>
+                  <Modulos />
                 </ProtectedRoute>
               }
             />

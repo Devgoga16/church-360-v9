@@ -259,8 +259,8 @@ export function Sidebar({
     Record<string, boolean>
   >({});
 
-  const filteredRoles = roleStructure.filter(
-    (role) => user?.roles.includes(role.id)
+  const filteredRoles = roleStructure.filter((role) =>
+    user?.roles.includes(role.id),
   );
 
   const isActive = (href: string) => location.pathname === href;
@@ -303,8 +303,7 @@ export function Sidebar({
         >
           {filteredRoles.map((role) => {
             const isSingleRole = filteredRoles.length === 1;
-            const showModules =
-              isSingleRole || expandedRoles[role.label];
+            const showModules = isSingleRole || expandedRoles[role.label];
 
             return (
               <div key={role.label} className={isSingleRole ? "" : "mb-6"}>
@@ -415,7 +414,9 @@ export function Sidebar({
         <div
           className={cn(
             "border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/30",
-            isCollapsed ? "px-2 py-4 sm:py-6 flex flex-col items-center" : "px-3 sm:px-4 py-4 sm:py-6",
+            isCollapsed
+              ? "px-2 py-4 sm:py-6 flex flex-col items-center"
+              : "px-3 sm:px-4 py-4 sm:py-6",
           )}
         >
           <Link

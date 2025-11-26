@@ -241,12 +241,6 @@ export function Sidebar({
                                     : "text-slate-600 dark:text-slate-400 hover:text-[#042D62] dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800",
                                 )}
                               >
-                                <item.icon
-                                  className={cn(
-                                    "h-4 w-4 flex-shrink-0 transition-transform duration-200",
-                                    active ? "text-white" : "group-hover:scale-110",
-                                  )}
-                                />
                                 <span className="flex-1 text-left">{item.label}</span>
                                 {active && <ChevronRight className="h-3 w-3 ml-auto" />}
                               </Link>

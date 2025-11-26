@@ -86,16 +86,14 @@ export function Sidebar({
             const roleId = permission.rol._id;
             const roleName = permission.rol.nombre;
             const RoleIcon = getIconFromFontAwesome(permission.rol.icono);
-            const isSingleRoleLocal = isSingleRole;
-            const showModules = isSingleRoleLocal || expandedRoles[roleId];
+            const showModules = expandedRoles[roleId];
             const sortedModules = [...permission.modulos].sort(
               (a, b) => a.module.orden - b.module.orden
             );
 
             return (
-              <div key={roleId} className={isSingleRoleLocal ? "" : "mb-6"}>
-                {!isSingleRoleLocal && (
-                  <button
+              <div key={roleId} className="mb-6">
+                <button
                     onClick={() => !isCollapsed && toggleRole(roleId)}
                     disabled={isCollapsed}
                     className={cn(
@@ -122,15 +120,10 @@ export function Sidebar({
                       </>
                     )}
                   </button>
-                )}
 
                 {!isCollapsed && showModules && (
                   <div
-                    className={cn(
-                      isSingleRoleLocal
-                        ? "space-y-2"
-                        : "mt-3 ml-1 space-y-2 border-l-2 border-slate-300 dark:border-slate-600 pl-3",
-                    )}
+                    className="mt-3 ml-1 space-y-2 border-l-2 border-slate-300 dark:border-slate-600 pl-3"
                   >
                     {sortedModules.map((moduleData) => {
                       const moduleId = moduleData.module._id;
@@ -164,13 +157,7 @@ export function Sidebar({
                           </button>
 
                           {expandedModules[moduleId] && (
-                            <div
-                              className={cn(
-                                isSingleRoleLocal
-                                  ? "mt-2 ml-2 space-y-1.5 border-l border-slate-300 dark:border-slate-600 pl-3"
-                                  : "mt-2 ml-2 space-y-1.5 border-l border-slate-300 dark:border-slate-600 pl-3",
-                              )}
-                            >
+                            <div className="mt-2 ml-2 space-y-1.5 border-l border-slate-300 dark:border-slate-600 pl-3">
                               {sortedOpciones.map((option) => {
                                 const active = isActive(option.ruta);
                                 return (

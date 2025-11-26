@@ -4,6 +4,7 @@
  */
 
 import axios, { AxiosInstance, AxiosError } from "axios";
+import { toast } from "@/hooks/use-toast";
 
 // Initialize axios instance with base URL
 const apiClient: AxiosInstance = axios.create({
@@ -44,18 +45,47 @@ apiClient.interceptors.request.use(
 apiClient.interceptors.response.use(
   (response) => response,
   (error: AxiosError) => {
+    const status = error.response?.status;
+    const data = error.response?.data as any;
+    const errorMessage = data?.error || data?.message || error.message;
+
     console.error("[API] Response error:", {
-      status: error.response?.status,
-      data: error.response?.data,
-      message: error.message,
+      status,
+      data,
+      message: errorMessage,
     });
 
-    // Handle specific error cases
-    if (error.response?.status === 401) {
+    // Show toast notification for all errors
+    let toastTitle = "Error";
+    let toastMessage = errorMessage || "Ocurrió un error inesperado";
+
+    if (status === 401) {
       // Clear auth on unauthorized
+      toastTitle = "Sesión expirada";
+      toastMessage = "Tu sesión ha expirado. Por favor, inicia sesión nuevamente.";
       localStorage.removeItem("auth");
-      window.location.href = "/login";
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 1500);
+    } else if (status === 403) {
+      toastTitle = "Acceso denegado";
+      toastMessage = "No tienes permiso para acceder a este recurso.";
+    } else if (status === 404) {
+      toastTitle = "No encontrado";
+      toastMessage = "El recurso solicitado no existe.";
+    } else if (status === 500) {
+      toastTitle = "Error del servidor";
+      toastMessage = "El servidor está experimentando problemas. Intenta de nuevo más tarde.";
+    } else if (!status) {
+      toastTitle = "Error de conexión";
+      toastMessage = "No se pudo conectar con el servidor. Verifica tu conexión a internet.";
     }
+
+    toast({
+      title: toastTitle,
+      description: toastMessage,
+      variant: "destructive",
+    });
 
     return Promise.reject(error);
   }

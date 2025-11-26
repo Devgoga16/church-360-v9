@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
+import { login } from "./routes/auth";
 import {
   listUsers,
   getUser,
@@ -42,6 +43,12 @@ export function createServer() {
   });
 
   app.get("/api/demo", handleDemo);
+
+  // ============================================================================
+  // AUTH ROUTES
+  // ============================================================================
+
+  app.post("/api/auth/login", login);
 
   // ============================================================================
   // USERS ROUTES

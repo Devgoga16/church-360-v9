@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Menu, X, Bell, User, LogOut } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
 import { cn } from "@/lib/utils";
 
 interface HeaderProps {
@@ -10,6 +12,15 @@ interface HeaderProps {
 export function Header({ onToggleSidebar }: HeaderProps) {
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [notificationCount] = useState(3);
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
+
+  const userInitial = user?.name?.charAt(0).toUpperCase() || "U";
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-white border-slate-200 dark:bg-slate-950 dark:border-slate-800">
@@ -49,42 +60,60 @@ export function Header({ onToggleSidebar }: HeaderProps) {
           </button>
 
           {/* User Menu */}
-          <div className="relative">
-            <button
-              onClick={() => setShowUserMenu(!showUserMenu)}
-              className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-            >
-              <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#5E17EB] to-[#5E17EB] flex items-center justify-center">
-                <span className="text-white text-xs font-bold">J</span>
-              </div>
-              <span className="text-xs font-medium text-[#050A30] dark:text-white hidden sm:block">
-                Juan G.
-              </span>
-            </button>
+          {user && (
+            <div className="relative">
+              <button
+                onClick={() => setShowUserMenu(!showUserMenu)}
+                className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              >
+                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#5E17EB] to-[#5E17EB] flex items-center justify-center">
+                  <span className="text-white text-xs font-bold">
+                    {userInitial}
+                  </span>
+                </div>
+                <span className="text-xs font-medium text-[#050A30] dark:text-white hidden sm:block">
+                  {user.name?.split(" ")[0]}{" "}
+                  {user.name?.split(" ")[1]?.charAt(0)}.
+                </span>
+              </button>
 
-            {showUserMenu && (
-              <div className="absolute right-0 mt-2 w-44 bg-white dark:bg-slate-900 rounded-lg shadow-lg border border-slate-200 dark:border-slate-800 overflow-hidden z-50">
-                <div className="px-3 py-2 border-b border-slate-200 dark:border-slate-800">
-                  <p className="text-xs font-medium text-[#050A30] dark:text-white">
-                    Juan García
-                  </p>
-                  <p className="text-xs text-[#173747] dark:text-slate-500">
-                    admin@iglesia360.com
-                  </p>
+              {showUserMenu && (
+                <div className="absolute right-0 mt-2 w-44 bg-white dark:bg-slate-900 rounded-lg shadow-lg border border-slate-200 dark:border-slate-800 overflow-hidden z-50">
+                  <div className="px-3 py-2 border-b border-slate-200 dark:border-slate-800">
+                    <p className="text-xs font-medium text-[#050A30] dark:text-white">
+                      {user.name}
+                    </p>
+                    <p className="text-xs text-[#173747] dark:text-slate-500">
+                      {user.email}
+                    </p>
+                    <div className="flex gap-1 mt-2">
+                      {user.roles.map((role) => (
+                        <span
+                          key={role}
+                          className="inline-block px-2 py-0.5 bg-[#042D62] text-white text-xs rounded"
+                        >
+                          {role}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="p-1.5">
+                    <button className="w-full flex items-center gap-2 px-2 py-1.5 text-xs rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-[#050A30] dark:text-white">
+                      <User className="h-3.5 w-3.5" />
+                      Mi Perfil
+                    </button>
+                    <button
+                      onClick={handleLogout}
+                      className="w-full flex items-center gap-2 px-2 py-1.5 text-xs text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20 rounded-md transition-colors"
+                    >
+                      <LogOut className="h-3.5 w-3.5" />
+                      Cerrar Sesión
+                    </button>
+                  </div>
                 </div>
-                <div className="p-1.5">
-                  <button className="w-full flex items-center gap-2 px-2 py-1.5 text-xs rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-[#050A30] dark:text-white">
-                    <User className="h-3.5 w-3.5" />
-                    Mi Perfil
-                  </button>
-                  <button className="w-full flex items-center gap-2 px-2 py-1.5 text-xs text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20 rounded-md transition-colors">
-                    <LogOut className="h-3.5 w-3.5" />
-                    Cerrar Sesión
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </header>

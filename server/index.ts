@@ -49,7 +49,6 @@ export function createServer() {
   // ============================================================================
 
   app.post("/api/auth/login", login);
-  console.log("[Server] Registered route: POST /api/auth/login");
 
   // ============================================================================
   // USERS ROUTES

@@ -5,6 +5,7 @@ import React, {
   useEffect,
   ReactNode,
 } from "react";
+import { authApi } from "@/services/api";
 
 export interface Permission {
   rol: {

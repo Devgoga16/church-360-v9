@@ -13,6 +13,7 @@ import Index from "./pages/Index";
 import Solicitudes from "./pages/Solicitudes";
 import NuevaSolicitud from "./pages/NuevaSolicitud";
 import SolicitudDetalle from "./pages/SolicitudDetalle";
+import Soporte from "./pages/Soporte";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

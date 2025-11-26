@@ -73,8 +73,7 @@ export function Header({ onToggleSidebar }: HeaderProps) {
                   </span>
                 </div>
                 <span className="text-xs font-medium text-white hidden sm:block">
-                  {userName.split(" ")[0]}{" "}
-                  {userName.split(" ")[1]?.charAt(0)}.
+                  {userName.split(" ")[0]} {userName.split(" ")[1]?.charAt(0)}.
                 </span>
               </button>
 

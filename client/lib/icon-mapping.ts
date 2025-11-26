@@ -122,7 +122,7 @@ const faToLucideMap: Record<string, IconComponent> = {
  */
 export function getIconFromFontAwesome(
   faClass: string,
-  defaultIcon: IconComponent = Settings
+  defaultIcon: IconComponent = Settings,
 ): IconComponent {
   if (!faClass) {
     return defaultIcon;

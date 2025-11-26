@@ -1,11 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import {
-  ChevronDown,
-  ChevronRight,
-  Settings,
-  HelpCircle,
-} from "lucide-react";
+import { ChevronDown, ChevronRight, Settings, HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/context/AuthContext";
 import { getIconFromFontAwesome } from "@/lib/icon-mapping";
@@ -23,7 +18,9 @@ export function Sidebar({
 }: SidebarProps) {
   const location = useLocation();
   const { permisos } = useAuth();
-  const [expandedRoles, setExpandedRoles] = useState<Record<string, boolean>>({});
+  const [expandedRoles, setExpandedRoles] = useState<Record<string, boolean>>(
+    {},
+  );
   const [expandedModules, setExpandedModules] = useState<
     Record<string, boolean>
   >({});
@@ -55,7 +52,7 @@ export function Sidebar({
         acc[perm.rol._id] = true;
         return acc;
       },
-      {} as Record<string, boolean>
+      {} as Record<string, boolean>,
     );
     setExpandedRoles(initialExpanded);
   }
@@ -88,48 +85,44 @@ export function Sidebar({
             const RoleIcon = getIconFromFontAwesome(permission.rol.icono);
             const showModules = expandedRoles[roleId];
             const sortedModules = [...permission.modulos].sort(
-              (a, b) => a.module.orden - b.module.orden
+              (a, b) => a.module.orden - b.module.orden,
             );
 
             return (
               <div key={roleId} className="mb-6">
                 <button
-                    onClick={() => !isCollapsed && toggleRole(roleId)}
-                    disabled={isCollapsed}
-                    className={cn(
-                      "w-full flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200",
-                      expandedRoles[roleId]
-                        ? "bg-[#26629c] text-white shadow-md shadow-[#26629c]/20"
-                        : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:shadow-sm",
-                      isCollapsed && "flex justify-center",
-                    )}
-                    title={isCollapsed ? roleName : undefined}
-                  >
-                    <RoleIcon className="h-5 w-5 flex-shrink-0" />
-                    {!isCollapsed && (
-                      <>
-                        <span className="flex-1 text-left">{roleName}</span>
-                        <ChevronDown
-                          className={cn(
-                            "h-2 w-2 transition-transform duration-200 flex-shrink-0",
-                            expandedRoles[roleId]
-                              ? "rotate-0"
-                              : "-rotate-90",
-                          )}
-                        />
-                      </>
-                    )}
-                  </button>
+                  onClick={() => !isCollapsed && toggleRole(roleId)}
+                  disabled={isCollapsed}
+                  className={cn(
+                    "w-full flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200",
+                    expandedRoles[roleId]
+                      ? "bg-[#26629c] text-white shadow-md shadow-[#26629c]/20"
+                      : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:shadow-sm",
+                    isCollapsed && "flex justify-center",
+                  )}
+                  title={isCollapsed ? roleName : undefined}
+                >
+                  <RoleIcon className="h-5 w-5 flex-shrink-0" />
+                  {!isCollapsed && (
+                    <>
+                      <span className="flex-1 text-left">{roleName}</span>
+                      <ChevronDown
+                        className={cn(
+                          "h-2 w-2 transition-transform duration-200 flex-shrink-0",
+                          expandedRoles[roleId] ? "rotate-0" : "-rotate-90",
+                        )}
+                      />
+                    </>
+                  )}
+                </button>
 
                 {!isCollapsed && showModules && (
-                  <div
-                    className="mt-3 ml-1 space-y-2 border-l-2 border-slate-300 dark:border-slate-600 pl-3"
-                  >
+                  <div className="mt-3 ml-1 space-y-2 border-l-2 border-slate-300 dark:border-slate-600 pl-3">
                     {sortedModules.map((moduleData) => {
                       const moduleId = moduleData.module._id;
                       const moduleName = moduleData.module.nombre;
                       const sortedOpciones = [...moduleData.opciones].sort(
-                        (a, b) => a.orden - b.orden
+                        (a, b) => a.orden - b.orden,
                       );
 
                       return (

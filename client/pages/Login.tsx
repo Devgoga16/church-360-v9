@@ -119,13 +119,16 @@ export default function Login() {
               disabled={isLoading}
               className="w-full p-3 border-2 border-slate-200 rounded-lg hover:border-[#26629c] hover:bg-[#26629c]/5 transition-all text-left"
             >
-              <div className="font-semibold text-slate-900">Admin (2 roles)</div>
+              <div className="font-semibold text-slate-900">
+                Admin (2 roles)
+              </div>
               <div className="text-sm text-slate-600">admin@iglesia360.com</div>
             </button>
           </div>
 
           <p className="text-center text-xs text-slate-500 mt-6">
-            Credenciales: <span className="font-mono">admin</span> / <span className="font-mono">admin123</span>
+            Credenciales: <span className="font-mono">admin</span> /{" "}
+            <span className="font-mono">admin123</span>
           </p>
         </div>
       </div>

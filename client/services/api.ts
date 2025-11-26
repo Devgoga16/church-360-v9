@@ -7,7 +7,7 @@ import axios, { AxiosInstance, AxiosError } from "axios";
 
 // Initialize axios instance with base URL
 const apiClient: AxiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || "https://iglesia360-api.unify-tec.com",
+  baseURL: import.meta.env.VITE_API_URL || "https://iglesia360-api.unify-tec.com",
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",

@@ -28,8 +28,9 @@ export function ProtectedRoute({
   }
 
   if (requiredRoles && user) {
+    const userRoleNames = user.roles.map((role) => role.nombre);
     const hasRequiredRole = requiredRoles.some((role) =>
-      user.roles.includes(role),
+      userRoleNames.includes(role),
     );
 
     if (!hasRequiredRole) {

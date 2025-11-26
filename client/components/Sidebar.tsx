@@ -291,7 +291,7 @@ export function Sidebar({
       <aside
         className={cn(
           "fixed left-0 top-16 h-[calc(100vh-4rem)] bg-white border-r border-slate-200 dark:bg-slate-900 dark:border-slate-800 transition-all duration-300 ease-in-out z-40 md:relative md:top-0 flex flex-col shadow-sm",
-          isCollapsed ? "w-20" : "w-72",
+          isCollapsed ? "w-20" : "w-56 sm:w-64 md:w-72",
           !isOpen && "-translate-x-full md:translate-x-0",
         )}
       >

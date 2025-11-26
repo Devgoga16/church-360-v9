@@ -24,25 +24,25 @@ export function Header({ onToggleSidebar }: HeaderProps) {
   const userInitial = userName.charAt(0).toUpperCase();
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-white border-slate-200 dark:bg-slate-950 dark:border-slate-800">
+    <header className="sticky top-0 z-40 w-full border-b bg-[#042D62] border-[#031f42] dark:bg-[#042D62] dark:border-[#031f42] shadow-md">
       <div className="flex h-14 items-center justify-between px-3 md:px-4">
         <div className="flex items-center gap-2">
           <button
             onClick={onToggleSidebar}
-            className="inline-flex md:hidden items-center justify-center w-9 h-9 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-300"
+            className="inline-flex md:hidden items-center justify-center w-9 h-9 rounded-lg hover:bg-white/10 transition-colors text-white"
           >
             <Menu className="h-4 w-4" />
           </button>
 
           <div className="flex items-center gap-2">
-            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-[#5E17EB] to-[#5E17EB] shadow-lg shadow-[#5E17EB]/30 font-logo">
-              <span className="text-white font-bold text-sm">✦</span>
+            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-white shadow-lg shadow-white/20 font-logo">
+              <span className="text-[#042D62] font-bold text-sm">✦</span>
             </div>
             <div className="hidden sm:flex flex-col">
-              <h1 className="text-sm font-logo text-[#050A30] dark:text-white leading-tight">
+              <h1 className="text-sm font-logo text-white leading-tight">
                 Iglesia 360
               </h1>
-              <span className="text-xs font-subheading text-[#173747] dark:text-slate-400">
+              <span className="text-xs font-subheading text-white/70">
                 IACYM - Comas
               </span>
             </div>
@@ -51,8 +51,8 @@ export function Header({ onToggleSidebar }: HeaderProps) {
 
         <div className="flex items-center gap-3">
           {/* Notifications */}
-          <button className="relative p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
-            <Bell className="h-4 w-4 text-[#173747] dark:text-slate-400" />
+          <button className="relative p-1.5 rounded-lg hover:bg-white/10 transition-colors">
+            <Bell className="h-4 w-4 text-white" />
             {notificationCount > 0 && (
               <span className="absolute top-0.5 right-0.5 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-bold text-[10px]">
                 {notificationCount}

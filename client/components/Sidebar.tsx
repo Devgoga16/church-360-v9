@@ -418,12 +418,9 @@ export function Sidebar({
             isCollapsed ? "px-2 py-6 flex flex-col items-center" : "px-4 py-6",
           )}
         >
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              window.open("mailto:soporte@iglesia360.com", "_blank");
-            }}
+          <Link
+            to="/soporte"
+            onClick={onClose}
             className={cn(
               "flex items-center gap-2 text-xs font-medium text-slate-500 dark:text-slate-400 hover:text-[#042D62] dark:hover:text-blue-400 transition-colors",
               isCollapsed && "flex-col gap-1 w-full justify-center",
@@ -432,7 +429,7 @@ export function Sidebar({
           >
             <HelpCircle className="h-4 w-4 flex-shrink-0" />
             {!isCollapsed && <span>Soporte</span>}
-          </a>
+          </Link>
         </div>
       </aside>
     </>

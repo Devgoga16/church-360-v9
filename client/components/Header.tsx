@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Menu, X, Bell, User, LogOut } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
 import { cn } from "@/lib/utils";
 
 interface HeaderProps {
@@ -10,6 +12,15 @@ interface HeaderProps {
 export function Header({ onToggleSidebar }: HeaderProps) {
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [notificationCount] = useState(3);
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
+
+  const userInitial = user?.name?.charAt(0).toUpperCase() || "U";
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-white border-slate-200 dark:bg-slate-950 dark:border-slate-800">

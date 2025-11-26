@@ -259,7 +259,7 @@ export function Sidebar({
   >({});
 
   const filteredRoles = roleStructure.filter(
-    (role) => user?.roles.includes(role.label)
+    (role) => user?.roles.includes(role.id)
   );
 
   const isActive = (href: string) => location.pathname === href;

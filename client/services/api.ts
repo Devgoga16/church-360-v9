@@ -151,4 +151,15 @@ export const approvalsApi = {
     apiClient.post(`/api/solicitudes/${solicitudId}/reject`, data),
 };
 
+/**
+ * Roles API calls
+ */
+export const rolesApi = {
+  getAll: () => apiClient.get("/api/roles"),
+  getById: (id: string) => apiClient.get(`/api/roles/${id}`),
+  create: (data: any) => apiClient.post("/api/roles", data),
+  update: (id: string, data: any) => apiClient.put(`/api/roles/${id}`, data),
+  delete: (id: string) => apiClient.delete(`/api/roles/${id}`),
+};
+
 export default apiClient;

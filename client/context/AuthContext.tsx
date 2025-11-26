@@ -90,12 +90,17 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
+  const [permisos, setPermisos] = useState<Permission[] | null>(null);
+  const [token, setToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+    const storedAuth = localStorage.getItem("auth");
+    if (storedAuth) {
+      const authData = JSON.parse(storedAuth);
+      setUser(authData.user);
+      setPermisos(authData.permisos);
+      setToken(authData.token);
     }
     setIsLoading(false);
   }, []);
@@ -120,14 +125,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         );
       }
 
-      const data = await response.json();
+      const data: AuthResponse = await response.json();
       console.log("[Auth] Login response data:", data);
 
       if (data.success) {
-        localStorage.setItem("user", JSON.stringify(data.data));
-        setUser(data.data);
+        const authData = {
+          user: data.data.user,
+          permisos: data.data.permisos,
+          token: data.data.token,
+        };
+        localStorage.setItem("auth", JSON.stringify(authData));
+        setUser(data.data.user);
+        setPermisos(data.data.permisos);
+        setToken(data.data.token);
       } else {
-        throw new Error(data.error || "Login failed");
+        throw new Error("Login failed");
       }
     } catch (error) {
       console.error("[Auth] Login error:", error);
@@ -138,14 +150,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const logout = () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem("auth");
     setUser(null);
+    setPermisos(null);
+    setToken(null);
   };
 
   return (
     <AuthContext.Provider
       value={{
         user,
+        permisos,
+        token,
         isAuthenticated: !!user,
         login,
         logout,
